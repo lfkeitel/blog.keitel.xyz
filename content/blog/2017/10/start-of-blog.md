@@ -2,7 +2,7 @@
 title: "Start of Blog"
 description: "The start of a new blog about tech, programming, and anything I find interesting"
 author: "Lee Keitel"
-date: "2017-10-11"
+date: "2017-10-11T20:50:00-05:00"
 
 featured: ""
 featuredalt: ""
