@@ -33,24 +33,9 @@ pluralizeListTitles = false
     loadFavicon          = false
     faviconVersion       = ""
 
-    # Disable showing the social sharing links on blog posts
-    socialShareDisabled = false
-
-    # Load custom CSS or JavaScript files. The variable is an array so that you
-    # can load multiple files if necessary. You can also load the standard theme
-    # files by adding the value, "default".
-    # customCSS            = ["default", "/path/to/file"]
-    # customJS             = ["default", "/path/to/file"]
-
-    customCSS            = ["default"]
-    customJS             = ["default"]
-
 # Disqus will take priority over staticman due to its ease of use. Feel free to check out both and decide.
 [params.staticman]
     staticman = false
-    username  = ""
-    repo      = ""
-    branch    = ""
 
 # parms.intro will appear on the sidebar
 # This is optional, but it's suggested to use
@@ -68,8 +53,8 @@ pluralizeListTitles = false
     src       = "/img/main/logo.jpg"
     # modify your picture in the shape of a circle or
     # future imperfect's hexagonal shape
-    circle    = false
-    imperfect = true
+    circle    = true
+    imperfect = false
     width     = ""
     alt       = "The Tech Manual Blog"
 
@@ -122,30 +107,4 @@ pluralizeListTitles = false
 # The social media icons will appear on the sidebar
 [social]
     github          = "lfkeitel"
-    bitbucket       = ""
-    jsfiddle        = ""
-    codepen         = ""
-    foursquare      = ""
-    dribbble        = ""
-    deviantart      = ""
-    behance         = ""
-    flickr          = ""
-    instagram       = ""
-    youtube         = ""
-    vimeo           = ""
-    vine            = ""
-    medium          = ""
-    wordpress       = ""
-    tumblr          = ""
-    xing            = ""
-    linkedin        = ""
-    slideshare      = ""
-    stackoverflow   = ""
-    reddit          = ""
-    pinterest       = ""
-    googleplus      = ""
-    facebook        = ""
-    facebook_admin  = ""
-    twitter_domain  = ""
     twitter         = "OnesimusSystems"
-    email           = ""
