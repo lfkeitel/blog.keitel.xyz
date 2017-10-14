@@ -1,6 +1,8 @@
 ---
+title: "{{ replace .TranslationBaseName "-" " " | title }}"
 description: "EDIT ME"
 author: "Lee Keitel"
+date: {{ .Date }}
 draft: true
 
 featured: ""
