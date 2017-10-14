@@ -4,7 +4,7 @@ title = "Tech Manual Blog"
 theme = "hugo-future-imperfect"
 preserveTaxonomyNames = true
 paginate = 5
-disqusShortname = "shortname"
+disqusShortname = "keitel-blog"
 googleAnalytics = ""
 pluralizeListTitles = false
 
