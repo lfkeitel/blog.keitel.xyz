@@ -5,7 +5,7 @@ theme = "hugo-future-imperfect"
 preserveTaxonomyNames = true
 paginate = 5
 disqusShortname = "keitel-blog"
-googleAnalytics = ""
+googleAnalytics = "UA-108085379-1"
 pluralizeListTitles = false
 
 [params]
