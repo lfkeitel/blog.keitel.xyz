@@ -11,15 +11,7 @@ RUN cd /site \
     && hugo
 
 # Build image with caddy to serve static site generated above
-FROM alpine:edge
-
-RUN apk update \
-    && apk add caddy \
-    && rm -rf /var/cache/apk/*
+FROM lfkeitel/caddy:latest
 
 COPY --from=build-site /site/public /site
 ADD docker/caddy.conf /etc/caddy/caddy.conf
-
-EXPOSE 80 443
-
-CMD ["/usr/sbin/caddy", "-conf", "/etc/caddy/caddy.conf"]
