@@ -26,8 +26,8 @@ pipeline {
 
       steps {
         sh 'docker login -u "$DOCKER_HUB_USR" -p "$DOCKER_HUB_PSW"'
-        sh 'docker tag lfkeitel/blog-site:$GIT_COMMIT lfkeitel/blog-site:GIT_BRANCH'
-        sh 'docker push lfkeitel/blog-site:GIT_BRANCH'
+        sh 'docker tag lfkeitel/blog-site:$GIT_COMMIT lfkeitel/blog-site:$GIT_BRANCH'
+        sh 'docker push lfkeitel/blog-site:$GIT_BRANCH'
       }
     }
   }
