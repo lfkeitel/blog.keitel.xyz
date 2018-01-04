@@ -3,8 +3,5 @@ services:
   blog:
     image: lfkeitel/blog-site:latest
     ports:
-     - "80:80"
-     - "443:443"
-    volumes:
-     - "/root/blog.keitel.xyz:/tls"
+     - "127.0.0.1:8085:80"
     restart: always
