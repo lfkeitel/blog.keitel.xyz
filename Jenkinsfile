@@ -8,7 +8,8 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        sh 'docker build -t lfkeitel/blog-site:${GIT_COMMIT} -f Dockerfile .'
+        sh 'git submodule init && git submodule update'
+        sh 'docker build --no-cache -t lfkeitel/blog-site:${GIT_COMMIT} -f Dockerfile .'
       }
     }
 
@@ -25,6 +26,7 @@ pipeline {
             docker login -u "${USERNAME}" -p "${PASSWORD}"
             docker tag lfkeitel/blog-site:${GIT_COMMIT} lfkeitel/blog-site:latest
             docker push lfkeitel/blog-site:latest
+            docker image rm lfkeitel/blog-site:latest
           """
         }
       }
@@ -47,7 +49,7 @@ pipeline {
 
   post {
     always {
-      sh 'docker image rm -f $(docker image inspect -f \'{{.Id}}\' lfkeitel/blog-site:${GIT_COMMIT}) || return 0'
+      sh 'docker image rm lfkeitel/blog-site:${GIT_COMMIT} || return 0'
     }
   }
 }
