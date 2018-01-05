@@ -21,9 +21,15 @@ pipeline {
 
       steps {
         withCredentials([usernamePassword(credentialsId: 'docker-hub', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]) {
-          sh 'docker login -u "$USERNAME" -p "$PASSWORD"'
-          sh 'docker tag lfkeitel/blog-site:$GIT_COMMIT lfkeitel/blog-site:GIT_BRANCH'
-          sh 'docker push lfkeitel/blog-site:GIT_BRANCH'
+          sh """
+            docker login -u "${USERNAME}" -p "${PASSWORD}"
+            docker tag lfkeitel/blog-site:${GIT_COMMIT} lfkeitel/blog-site:${GIT_BRANCH}
+            docker push lfkeitel/blog-site:${GIT_BRANCH}
+            if [ "${GIT_BRANCH}" = 'master' ]; then
+              docker tag lfkeitel/blog-site:${GIT_COMMIT} lfkeitel/blog-site:latest
+              docker push lfkeitel/blog-site:latest
+            fi
+          """
         }
       }
     }
@@ -31,13 +37,13 @@ pipeline {
     stage('Deploy') {
       when {
         expression {
-          currentBuild.result == null || currentBuild.result == 'SUCCESS'
+          env.GIT_BRANCH == 'master' && (currentBuild.result == null || currentBuild.result == 'SUCCESS')
         }
       }
 
       steps {
         withCredentials([sshUserPrivateKey(credentialsId: 'jenkins-ssh', keyFileVariable: 'KEY_FILE', usernameVariable: 'SSH_USER')]) {
-          sh 'ssh -i $KEY_FILE -l $SSH_USER blog.keitel.xyz /opt/jenkins/blog/update-blog.sh'
+          sh 'ssh -i ${KEY_FILE} -l ${SSH_USER} blog.keitel.xyz /opt/jenkins/blog/update-blog.sh'
         }
       }
     }
@@ -45,7 +51,7 @@ pipeline {
 
   post {
     always {
-      sh 'docker image rm -f $(docker image inspect -f \'{{.Id}}\' lfkeitel/blog-site:$GIT_COMMIT) || return 0'
+      sh 'docker image rm -f $(docker image inspect -f \'{{.Id}}\' lfkeitel/blog-site:${GIT_COMMIT}) || return 0'
     }
   }
 }
