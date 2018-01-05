@@ -3,7 +3,6 @@ pipeline {
     node {
       label 'docker'
     }
-
   }
 
   stages {
@@ -20,14 +19,26 @@ pipeline {
         }
       }
 
-      environment {
-        DOCKER_HUB = credentials('docker-hub')
+      steps {
+        withCredentials([usernamePassword(credentialsId: 'docker-hub', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]) {
+          sh 'docker login -u "$USERNAME" -p "$PASSWORD"'
+          sh 'docker tag lfkeitel/blog-site:$GIT_COMMIT lfkeitel/blog-site:GIT_BRANCH'
+          sh 'docker push lfkeitel/blog-site:GIT_BRANCH'
+        }
+      }
+    }
+
+    stage('Deploy') {
+      when {
+        expression {
+          currentBuild.result == null || currentBuild.result == 'SUCCESS'
+        }
       }
 
       steps {
-        sh 'docker login -u "$DOCKER_HUB_USR" -p "$DOCKER_HUB_PSW"'
-        sh 'docker tag lfkeitel/blog-site:$GIT_COMMIT lfkeitel/blog-site:$GIT_BRANCH'
-        sh 'docker push lfkeitel/blog-site:$GIT_BRANCH'
+        withCredentials([sshUserPrivateKey(credentialsId: 'jenkins-ssh', keyFileVariable: 'KEY_FILE', usernameVariable: 'SSH_USER')]) {
+          sh 'ssh -i $KEY_FILE -l $SSH_USER blog.keitel.xyz /opt/jenkins/blog/update-blog.sh'
+        }
       }
     }
   }
