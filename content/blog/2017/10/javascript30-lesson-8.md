@@ -8,7 +8,7 @@ type: "post"
 categories: ["JavaScript30", "JavaScript", "web dev"]
 ---
 
-Lesson 8 so far ass been the most fun. It focused around HTML canvases with the goal being to make a simple painting application.
+Lesson 8 so far has been the most fun. It focused around HTML canvases with the goal being to make a simple painting application.
 I have some experience with canvases before this lesson. A couple years ago I made an implementation of Conway's Game of Life
 using the canvas element. I have it setup at the bottom of this post if you want to play it. Source code it [here](https://github.com/lfkeitel/gameoflife).
 
@@ -37,7 +37,7 @@ function draw(e) {
 }
 ```
 
-In the lesson, Wes used a simply if statement to reset the hue to 0. In my code I used a more compact for with the modulus operator.
+In the lesson, Wes used a simply if statement to reset the hue to 0. In my code I used a more compact form with the modulus operator.
 
 ## Final Thoughts
 
