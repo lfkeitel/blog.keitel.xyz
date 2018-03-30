@@ -2,17 +2,13 @@
 title: "Dandelion"
 description: "A simple web log platform for teams"
 author: "Lee Keitel"
-date: "2017-10-11T20:50:00-05:00"
-
-featured: ""
-featuredpath: ""
-featuredalt: ""
+date: 2017-10-11T20:50:00-05:00
 
 linktitle: "Github"
 link: "https://github.com/onesimus-systems/dandelion"
-platform: "PHP"
 
 type: "itemized"
+socialShare: false
 ---
 
 ## Dandelion

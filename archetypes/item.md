@@ -10,7 +10,6 @@ featuredalt: ""
 
 linktitle: ""
 link: "#"
-platform: ""
 
 type: "itemized"
 ---

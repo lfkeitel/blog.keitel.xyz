@@ -16,12 +16,13 @@ pluralizeListTitles = false
     # set this to the section name if section is not post
     viewMorePostLink     = "/blog/"
 
-# Optional Params
+    # Optional Params
     # This will match the navbarTitle to the section of the website
     dynamicTitles        = true
     # RSS icon that appear on the sidebar, next to the social media buttons
     rssAppearAtTop       = true
     rssAppearAtBottom    = true
+    socialShare          = true
     # Social media buttons that appear on the sidebar
     socialAppearAtTop    = true
     socialAppearAtBottom = true
@@ -35,6 +36,9 @@ pluralizeListTitles = false
 
     highlightjsTheme = "atom-one-light"
 
+    summaryHome = true
+    summaryHomeCount = 6
+
 # Disqus will take priority over staticman due to its ease of use. Feel free to check out both and decide.
 [params.staticman]
     staticman = false
@@ -43,9 +47,7 @@ pluralizeListTitles = false
 # This is optional, but it's suggested to use
 [params.intro]
     header    = "The Tech Manual Blog"
-
     paragraph = "A blog about programming, technology, and other interesting stuff"
-
     about     = "Hi, I'm Lee. Programmer, tech enthusiast, YouTube binger."
 
 # This will also appear on the sidebar.
