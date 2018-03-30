@@ -62,13 +62,14 @@ The game will detect if life has stalled or is looping and will display that gen
 </div>
 
 <div id="controls">
-    <button type="button" onClick="Game.play(1);">Play</button>
-    <button type="button" onClick="Game.play(2);">Play Fast</button>
-    <button type="button" onClick="Game.play(5);">Play Really Fast</button>
-    <button type="button" onClick="Game.play(10);">Play Ludicrous Speed</button>
+    <button type="button" onClick="Game.play(7);">Play</button>
+    <button type="button" onClick="Game.play(5);">Play Fast</button>
+    <button type="button" onClick="Game.play(3);">Play Really Fast</button>
+    <button type="button" onClick="Game.play(1);">Play Ludicrous Speed</button>
     <button type="button" onClick="Game.nextOneStep();">One Step</button>
     <button type="button" onClick="Game.pause();">Pause</button>
-    <button type="button" onClick="Game.init();">Reset</button>
+    <button type="button" onClick="Game.reset();">Reset</button>
+    <button type="button" onClick="Game.randomize();">Randomize</button>
     <input type="checkbox" id="pause-stall" onClick="Game.setPauseOnStall();"> Pause on life stall
 </div>
 <script type="text/javascript" src="/js/2017/10/gameoflife.js"></script>
