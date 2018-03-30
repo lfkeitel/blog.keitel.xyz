@@ -1,14 +1,9 @@
 # Build site with Hugo
-FROM alpine:edge AS build-site
-
-RUN apk update \
-    && apk add hugo \
-    && rm -rf /var/cache/apk/*
+FROM lfkeitel/hugo:latest AS build-site
 
 ADD . /site
 
-RUN cd /site \
-    && hugo
+RUN cd /site && hugo
 
 # Build image with caddy to serve static site generated above
 FROM lfkeitel/caddy:latest

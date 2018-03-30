@@ -33,6 +33,8 @@ pluralizeListTitles = false
     loadFavicon          = false
     faviconVersion       = ""
 
+    highlightjsTheme = "atom-one-light"
+
 # Disqus will take priority over staticman due to its ease of use. Feel free to check out both and decide.
 [params.staticman]
     staticman = false
