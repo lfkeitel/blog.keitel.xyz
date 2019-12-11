@@ -9,7 +9,12 @@ pipeline {
     stage('Build') {
       steps {
         sh 'git submodule init && git submodule update'
-        sh 'docker build --no-cache -t lfkeitel/blog-site:${GIT_COMMIT} -f Dockerfile .'
+        withCredentials([usernamePassword(credentialsId: 'docker-hub', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]) {
+          sh """
+            docker login -u "${USERNAME}" -p "${PASSWORD}"
+            docker build --no-cache -t lfkeitel/blog-site:${GIT_COMMIT} -f Dockerfile .
+          """
+        }
       }
     }
 
